@@ -1,0 +1,30 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.categorias {
+  &__grid {
+    @include m.tablet {
+      @include m.grid(3, 2rem);
+    }
+  }
+  &__heading{
+      @include m.heading();
+  }
+}
+
+.categoria {
+  @for $i from 1 through 12 {
+    $imagen: "../img/categoria_" + $i + ".jpg";
+    &:nth-child(#{$i}) &__imagen {
+      background-image: url($imagen);
+      background-position: center;
+      background-size: cover;
+      height: 25rem;
+    }
+  }
+
+  &__heading{
+      text-align: center;
+      font-size: 2.5rem;
+  }
+}
